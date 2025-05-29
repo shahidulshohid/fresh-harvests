@@ -15,18 +15,19 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
+import { Checkbox } from "@/components/ui/checkbox";
 
 const Navbar = () => {
   const pathName = usePathname();
   /////////////////////dumy
   const status = "authenticated";
 
-  const [navBg, setNavBg] = useState(false);
-  const [showNav, setShowNav] = useState(false);
+  const [navBg, setNavBg] = useState<boolean>(false);
+  const [showNav, setShowNav] = useState<boolean>(false);
 
   const handleOpenNave = () => setShowNav(true);
   const handleCloseNave = () => setShowNav(false);
-  const [showPassword, setShowPassword] = useState(false);
+  const [showPassword, setShowPassword] = useState<boolean>(false);
 
   const openNav = showNav ? "translate-x-0" : "translate-x-[100%]";
 
@@ -142,21 +143,28 @@ const Navbar = () => {
                           placeholder="Enter your email"
                           className="p-2 border rounded"
                         />
-                          <label className="text-[#212337]">Password</label>
-                          <input
-                            type={showPassword ? "text" : "password"}
-                            placeholder="Enter your password"
-                            className="p-2 border rounded"
-                          />
-                          <span
-                            onClick={() => setShowPassword(!showPassword)}
-                            className="btn btn-xs absolute right-10 top-58"
-                          >
-                            {showPassword ? <FaEyeSlash className="text-[#A6A6A6]"/> : <FaEye className="text-[#A6A6A6]" />}
-                          </span>
+                        <label className="text-[#212337]">Password</label>
+                        <input
+                          type={showPassword ? "text" : "password"}
+                          placeholder="Enter your password"
+                          className="p-2 border rounded"
+                        />
+                        <span
+                          onClick={() => setShowPassword(!showPassword)}
+                          className="btn btn-xs absolute right-10 top-58"
+                        >
+                          {showPassword ? (
+                            <FaEyeSlash className="text-[#A6A6A6]" />
+                          ) : (
+                            <FaEye className="text-[#A6A6A6]" />
+                          )}
+                        </span>
                         <div className="flex justify-between items-center">
-                          <p>Remember me</p>
-                          <span>Forget Password</span>
+                          <p className="flex items-center gap-2">
+                            <Checkbox className="border-[#FF6A1A]" />
+                            Remember me
+                          </p>
+                          <span className="border-b-2 border-gray-600">Forget Password</span>
                         </div>
                         <button
                           type="submit"

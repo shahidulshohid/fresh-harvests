@@ -131,3 +131,9 @@
     @apply bg-background text-foreground;
   }
 }
+
+
+/* custom css  */
+svg.star-svg {
+display: inline;
+}
