@@ -66,7 +66,7 @@ const Navbar = () => {
               href="/"
               className="text-2xl lg:text-3xl font-semibold text-black"
             >
-              <p className="flex items-center gap-2">
+              <div className="flex items-center gap-2">
                 <Image
                   src={bannerImage}
                   alt="logo"
@@ -77,7 +77,7 @@ const Navbar = () => {
                 <span className="text-[#212337] text-xl md:text-2xl font-bold">
                   Fresh Harvests
                 </span>
-              </p>
+              </div>
             </Link>
           </div>
 
@@ -117,14 +117,14 @@ const Navbar = () => {
             {/* modal start from here  */}
             <div className="hidden lg:flex">
               {status !== "authenticated" ? (
-                <button className="font-semibold cursor-pointer py-1 px-4 rounded-4xl">
+                <button className="font-semibold cursor-pointer py-1 px-4 rounded-sm border">
                   Logout
                 </button>
               ) : (
                 <div className="flex gap-2">
                   <Dialog>
                     <DialogTrigger asChild>
-                      <button className="font-semibold cursor-pointer py-1 px-4 rounded-4xl">
+                      <button className="font-semibold cursor-pointer py-1 px-4 rounded-sm border">
                         Sign In
                       </button>
                     </DialogTrigger>
@@ -158,7 +158,7 @@ const Navbar = () => {
 
         {/* sidebar menu */}
         <div
-          className={`${openNav} right-0 fixed text-white flex justify-center flex-col h-full w-[80%] sm:w-[60%] bg-gray-600 space-y-6 z-[1006] transform transition-all duration-500`}
+          className={`${openNav} right-0 fixed text-white flex justify-center flex-col h-full w-[80%] sm:w-[60%] bg-[#749B3F] space-y-6 z-[1006] transform transition-all duration-500`}
         >
           <div className="flex flex-col justify-center space-y-5 text-black p-8 mt-10">
             <Link
