@@ -8,8 +8,11 @@ const Banner = () => {
         backgroundImage: `url(${bannerImage.src})`,
       }}
     >
-      <div className="flex justify-center items-center h-full text-white">
-        <h1 className="text-4xl font-bold">Welcome to Our Site</h1>
+      <div className="flex justify-between items-center h-full text-white">
+        <div>
+          <h1>left side</h1>
+        </div>
+        <div>left side</div>
       </div>
     </div>
   );

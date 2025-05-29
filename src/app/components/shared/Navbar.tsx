@@ -9,6 +9,15 @@ import { CiShoppingCart } from "react-icons/ci";
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import bannerImage from "@/assets/logo.png";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog"
+
 
 const Navbar = () => {
   const pathName = usePathname();
@@ -105,7 +114,7 @@ const Navbar = () => {
                 </Link> <p className="hidden lg:flex">Cart</p>
             </div>
             <div className="hidden lg:flex">
-              {status == "authenticated" ? (
+              {/* {status == "authenticated" ? (
                 <button className="font-semibold cursor-pointer py-1 px-4 rounded-4xl">
                   Logout
                 </button>
@@ -117,7 +126,40 @@ const Navbar = () => {
                     </button>
                   </Link>
                 </div>
-              )}
+              )} */}
+
+              {status !== "authenticated" ? (
+  <button className="font-semibold cursor-pointer py-1 px-4 rounded-4xl">
+    Logout
+  </button>
+) : (
+  <div className="flex gap-2">
+    <Dialog>
+      <DialogTrigger asChild>
+        <button className="font-semibold cursor-pointer py-1 px-4 rounded-4xl">
+          Sign In
+        </button>
+      </DialogTrigger>
+      <DialogContent>
+        <DialogHeader>
+          <DialogTitle>Sign In</DialogTitle>
+          <DialogDescription>
+            Enter your email and password to continue.
+          </DialogDescription>
+        </DialogHeader>
+        {/* Sample form UI (replace with real form logic) */}
+        <form className="flex flex-col gap-3 mt-4">
+          <input type="email" placeholder="Email" className="p-2 border rounded" />
+          <input type="password" placeholder="Password" className="p-2 border rounded" />
+          <button type="submit" className="bg-green-600 text-white p-2 rounded">
+            Sign In
+          </button>
+        </form>
+      </DialogContent>
+    </Dialog>
+  </div>
+)}
+
             </div>
             <div className="ml-5">
               <button onClick={handleOpenNave} className="lg:hidden">
