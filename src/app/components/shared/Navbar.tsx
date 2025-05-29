@@ -1,10 +1,9 @@
-
 "use client";
 import Link from "next/link";
 import { IoMdClose } from "react-icons/io";
 import { usePathname } from "next/navigation";
 import { GiHamburgerMenu } from "react-icons/gi";
-import { FaHeart } from "react-icons/fa6";
+import { FaEye, FaEyeSlash, FaHeart } from "react-icons/fa6";
 import { CiShoppingCart } from "react-icons/ci";
 import { useEffect, useState } from "react";
 import Image from "next/image";
@@ -12,23 +11,22 @@ import bannerImage from "@/assets/logo.png";
 import {
   Dialog,
   DialogContent,
-  DialogDescription,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/components/ui/dialog"
-
+} from "@/components/ui/dialog";
 
 const Navbar = () => {
   const pathName = usePathname();
   /////////////////////dumy
-  const status = "authenticated"
+  const status = "authenticated";
 
   const [navBg, setNavBg] = useState(false);
   const [showNav, setShowNav] = useState(false);
 
   const handleOpenNave = () => setShowNav(true);
   const handleCloseNave = () => setShowNav(false);
+  const [showPassword, setShowPassword] = useState(false);
 
   const openNav = showNav ? "translate-x-0" : "translate-x-[100%]";
 
@@ -108,58 +106,69 @@ const Navbar = () => {
               </p>
             </div>
             <div className="flex items-center gap-3">
-                <Link href="/card" className="relative">
+              <Link href="/card" className="relative">
                 <CiShoppingCart size={25} />
-                <sup className="absolute left-4 -top-1 w-4 h-4 rounded-full bg-red-500 flex justify-center items-center text-sm p-1 text-white">0</sup>
-                </Link> <p className="hidden lg:flex">Cart</p>
+                <sup className="absolute left-4 -top-1 w-4 h-4 rounded-full bg-red-500 flex justify-center items-center text-sm p-1 text-white">
+                  0
+                </sup>
+              </Link>{" "}
+              <p className="hidden lg:flex">Cart</p>
             </div>
+            {/* modal start from here  */}
             <div className="hidden lg:flex">
-              {/* {status == "authenticated" ? (
+              {status !== "authenticated" ? (
                 <button className="font-semibold cursor-pointer py-1 px-4 rounded-4xl">
                   Logout
                 </button>
               ) : (
                 <div className="flex gap-2">
-                  <Link href="/signIn">
-                    <button className="font-semibold cursor-pointer py-1 px-4 rounded-4xl">
-                      Sign In
-                    </button>
-                  </Link>
+                  <Dialog>
+                    <DialogTrigger asChild>
+                      <button className="font-semibold cursor-pointer py-1 px-4 rounded-4xl">
+                        Sign In
+                      </button>
+                    </DialogTrigger>
+                    <DialogContent>
+                      <DialogHeader>
+                        <DialogTitle className="text-3xl text-center font-bold text-[#212337]">
+                          Login
+                        </DialogTitle>
+                      </DialogHeader>
+                      {/* Sample form UI (replace with real form logic) */}
+                      <form className="flex flex-col gap-3 mt-4">
+                        <label className="text-[#212337]">Email</label>
+                        <input
+                          type="email"
+                          placeholder="Enter your email"
+                          className="p-2 border rounded"
+                        />
+                          <label className="text-[#212337]">Password</label>
+                          <input
+                            type={showPassword ? "text" : "password"}
+                            placeholder="Enter your password"
+                            className="p-2 border rounded"
+                          />
+                          <span
+                            onClick={() => setShowPassword(!showPassword)}
+                            className="btn btn-xs absolute right-10 top-58"
+                          >
+                            {showPassword ? <FaEyeSlash className="text-[#A6A6A6]"/> : <FaEye className="text-[#A6A6A6]" />}
+                          </span>
+                        <div className="flex justify-between items-center">
+                          <p>Remember me</p>
+                          <span>Forget Password</span>
+                        </div>
+                        <button
+                          type="submit"
+                          className="bg-[#FF6A1A] font-semibold text-white p-2 rounded text-lg"
+                        >
+                          Login
+                        </button>
+                      </form>
+                    </DialogContent>
+                  </Dialog>
                 </div>
-              )} */}
-
-              {status !== "authenticated" ? (
-  <button className="font-semibold cursor-pointer py-1 px-4 rounded-4xl">
-    Logout
-  </button>
-) : (
-  <div className="flex gap-2">
-    <Dialog>
-      <DialogTrigger asChild>
-        <button className="font-semibold cursor-pointer py-1 px-4 rounded-4xl">
-          Sign In
-        </button>
-      </DialogTrigger>
-      <DialogContent>
-        <DialogHeader>
-          <DialogTitle>Sign In</DialogTitle>
-          <DialogDescription>
-            Enter your email and password to continue.
-          </DialogDescription>
-        </DialogHeader>
-        {/* Sample form UI (replace with real form logic) */}
-        <form className="flex flex-col gap-3 mt-4">
-          <input type="email" placeholder="Email" className="p-2 border rounded" />
-          <input type="password" placeholder="Password" className="p-2 border rounded" />
-          <button type="submit" className="bg-green-600 text-white p-2 rounded">
-            Sign In
-          </button>
-        </form>
-      </DialogContent>
-    </Dialog>
-  </div>
-)}
-
+              )}
             </div>
             <div className="ml-5">
               <button onClick={handleOpenNave} className="lg:hidden">
