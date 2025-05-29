@@ -1,7 +1,8 @@
 import React from "react";
 import Image from "next/image";
+import logo from "../../assets/logo.png"
 
-export default function AboutUs() {
+export default function SectionAbout() {
   return (
     <div>
       <div className="max-w-[1213px] mx-auto container ">
@@ -20,7 +21,7 @@ export default function AboutUs() {
             {/* Fresh Harvest */}
             <button className="flex items-center gap-2 sm:gap-4 rounded-lg px-4 py-1 md:px-6 md:py-3 bg-[#fff] absolute bottom-[30%] right-[20%] sm:bottom-[30%] sm:right-[20%] lg:bottom-[40%] shadow">
               <Image
-                src={"/assets/logo.png"}
+                src={logo}
                 width={25}
                 height={25}
                 alt="Fresh Harvest logo"
@@ -33,7 +34,7 @@ export default function AboutUs() {
             <div className="p-2 rounded-xl shadow text-center space-y-1 sm:space-y-2 absolute -bottom-20 -right-5 sm:-bottom-[20%] sm:right-[1%] -lg:bottom-[40%] -lg:right-[1%] bg-[#fff]">
               <figure className="bg-[#F4F6F6] rounded-lg w-full h-full flex items-center justify-center p-1">
                 <Image
-                  src={"/assets/latos.png"}
+                  src={"/aboutImg1.jpg"}
                   width={140}
                   height={160}
                   className="max-sm:w-[70px] max-sm:h-[60px] max-lg:w-[120px] max-lg:h-[100px]"

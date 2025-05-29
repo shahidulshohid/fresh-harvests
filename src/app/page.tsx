@@ -1,7 +1,7 @@
 "use client"
 import FreshProductComponent from '@/components/homeComponent/FreshProductComponent';
 import Banner from '../components/Banner';
-import SectionAbout from '../components/homeComponent/SectionAbout';
+import SectionAbout from '@/components/homeComponent/SectionAbout';
 
 const Home = () => {
   return (
