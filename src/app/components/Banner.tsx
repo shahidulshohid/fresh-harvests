@@ -1,8 +1,16 @@
-import Image from "next/image";
+import bannerImage from "@/assets/bannerImg/bannerBgImg.png";
+
 const Banner = () => {
   return (
-    <div>
-      <Image src="/images/banner.jpg" alt="Banner" className="w-full h-auto" />
+    <div
+      className="w-full h-[1600px] bg-cover bg-center"
+      style={{
+        backgroundImage: `url(${bannerImage.src})`,
+      }}
+    >
+      <div className="flex justify-center items-center h-full text-white">
+        <h1 className="text-4xl font-bold">Welcome to Our Site</h1>
+      </div>
     </div>
   );
 };

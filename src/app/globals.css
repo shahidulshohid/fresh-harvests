@@ -24,3 +24,14 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* css of navbar  */
+.active-link::after {
+  content: " ";
+  position: absolute;
+  left: 0;
+  bottom: -4x;
+  width: 50%;
+  height: 2px;
+  background-color: #ea580c;
+}
