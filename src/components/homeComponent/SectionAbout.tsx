@@ -11,7 +11,7 @@ export default function SectionAbout() {
             {/* image */}
             <figure>
               <Image
-                src={"/assets/foodHarvesting.png"}
+                src={"/aboutImg2.jpg"}
                 width={550}
                 height={550}
                 className=""
@@ -19,7 +19,7 @@ export default function SectionAbout() {
               />
             </figure>
             {/* Fresh Harvest */}
-            <button className="flex items-center gap-2 sm:gap-4 rounded-lg px-4 py-1 md:px-6 md:py-3 bg-[#fff] absolute bottom-[30%] right-[20%] sm:bottom-[30%] sm:right-[20%] lg:bottom-[40%] shadow">
+            <button className="flex items-center gap-2 sm:gap-4 rounded-lg px-4 py-1 md:px-6 md:py-3 bg-[#fff] absolute bottom-[30%] right-[20%] sm:bottom-[30%] sm:right-[20%] lg:bottom-[20%] shadow">
               <Image
                 src={logo}
                 width={25}
