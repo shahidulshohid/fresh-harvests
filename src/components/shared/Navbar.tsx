@@ -3,7 +3,7 @@ import Link from "next/link";
 import { IoMdClose } from "react-icons/io";
 import { usePathname } from "next/navigation";
 import { GiHamburgerMenu } from "react-icons/gi";
-import { FaEye, FaEyeSlash, FaHeart } from "react-icons/fa6";
+import {FaHeart } from "react-icons/fa6";
 import { CiShoppingCart } from "react-icons/ci";
 import { useEffect, useState } from "react";
 import Image from "next/image";
@@ -15,7 +15,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { Checkbox } from "@/components/ui/checkbox";
+import Login from "../auth/Login";
 
 const Navbar = () => {
   const pathName = usePathname();
@@ -27,7 +27,6 @@ const Navbar = () => {
 
   const handleOpenNave = () => setShowNav(true);
   const handleCloseNave = () => setShowNav(false);
-  const [showPassword, setShowPassword] = useState<boolean>(false);
 
   const openNav = showNav ? "translate-x-0" : "translate-x-[100%]";
 
@@ -135,44 +134,7 @@ const Navbar = () => {
                           Login
                         </DialogTitle>
                       </DialogHeader>
-                      {/* Sample form UI (replace with real form logic) */}
-                      <form className="flex flex-col gap-3 mt-4">
-                        <label className="text-[#212337]">Email</label>
-                        <input
-                          type="email"
-                          placeholder="Enter your email"
-                          className="p-2 border rounded"
-                        />
-                        <label className="text-[#212337]">Password</label>
-                        <input
-                          type={showPassword ? "text" : "password"}
-                          placeholder="Enter your password"
-                          className="p-2 border rounded"
-                        />
-                        <span
-                          onClick={() => setShowPassword(!showPassword)}
-                          className="btn btn-xs absolute right-10 top-58"
-                        >
-                          {showPassword ? (
-                            <FaEyeSlash className="text-[#A6A6A6]" />
-                          ) : (
-                            <FaEye className="text-[#A6A6A6]" />
-                          )}
-                        </span>
-                        <div className="flex justify-between items-center">
-                          <p className="flex items-center gap-2">
-                            <Checkbox className="border-[#FF6A1A]" />
-                            Remember me
-                          </p>
-                          <span className="border-b-2 border-gray-600">Forget Password</span>
-                        </div>
-                        <button
-                          type="submit"
-                          className="bg-[#FF6A1A] font-semibold text-white p-2 rounded text-lg"
-                        >
-                          Login
-                        </button>
-                      </form>
+                      <Login/>
                     </DialogContent>
                   </Dialog>
                 </div>

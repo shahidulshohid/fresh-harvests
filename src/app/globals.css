@@ -137,3 +137,28 @@
 svg.star-svg {
 display: inline;
 }
+
+/* create divider */
+.createDivider {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #555;
+}
+
+.createDivider::before,
+.createDivider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background-color: #ccc;
+}
+
+.createDivider::before {
+  margin-right: 10px;
+}
+
+.createDivider::after {
+  margin-left: 10px;
+}
+
