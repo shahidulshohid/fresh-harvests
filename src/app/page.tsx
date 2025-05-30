@@ -1,5 +1,4 @@
 "use client"
-// import FreshProductComponent from '@/components/homeComponent/FreshProductComponent';
 import dynamic from "next/dynamic";
 const FreshProductComponent = dynamic(() => import('@/components/homeComponent/FreshProductComponent'), {
   ssr: false,

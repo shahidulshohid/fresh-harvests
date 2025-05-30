@@ -205,6 +205,17 @@ const Navbar = () => {
             >
               Blog
             </Link>
+            <Link
+              onClick={handleCloseNave}
+              href="/#"
+              className={`${
+                pathName === "/#"
+                  ? "font-bold border-b-2 border-orange-600"
+                  : "font-semibold"
+              } w-fit`}
+            >
+              Sign In
+            </Link>
           </div>
           <button onClick={handleCloseNave} className="absolute top-8 right-8">
             <IoMdClose className="size-6 text-white cursor-pointer" />

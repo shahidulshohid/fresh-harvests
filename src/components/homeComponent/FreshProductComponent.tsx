@@ -141,7 +141,7 @@ export default function FreshProductComponent() {
         </div>
       </div>
       {/* All Product Button */}
-      <div className="text-center">
+      <div className="text-cent">
         <button className=" border border-[#FF6A1A]  text-[#FF6A1A] max-sm:text-[14px] text-xl lg:px-8 lg:py-4 rounded-lg">
           See All Products
         </button>
