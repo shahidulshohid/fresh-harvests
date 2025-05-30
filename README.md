@@ -8,7 +8,7 @@ Fresh Harvests is a modern and responsive e-commerce web application for fresh f
 
 ## 📂 Project live link 
 
-https://fresh-harvests-p12d6r804-shahidulshohids-projects.vercel.app/
+https://fresh-harvests-zeta.vercel.app/
 
 ---
 

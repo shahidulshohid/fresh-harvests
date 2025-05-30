@@ -1,10 +1,25 @@
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function FreshProductComponent() {
   const [toggle, setToggle] = useState<string>("All");
+  const [products, setProducts] = useState([]);
+  const getProducts = async () => {
+    try {
+      const res = await fetch("https://code-commando.com/api/v1/products");
+      const data = await res.json();
+      setProducts(data.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    getProducts();
+  }, []);
+  console.log(products, "========================");
   return (
-    <section className="space-y-10 lg:space-y-10 mt-[10px]">
+    <section className="space-y-10 lg:space-y-10 mt-[10px] w-11/12 mx-auto px-4 md:px-8">
       {/* Header */}
       <div className="text-center space-y-4 lg:space-y-5">
         <button className="text-[14px] sm:text-xl bg-[#749B3F1A] rounded-lg lg:rounded-xl font-semibold text-greenText px-3 py-1 ">
@@ -67,7 +82,7 @@ export default function FreshProductComponent() {
         <div className="p-4 rounded-2xl shadow-xl space-y-4">
           <figure className="bg-[#F4F6F6] rounded-2xl flex items-center justify-center">
             <Image
-              src="/assets/kiwi.png"
+              src="/aboutImg1.jpg"
               width={200}
               height={200}
               className="max-sm:w-[140px] max-sm:h-[140px] max-lg:w-[200px] max-lg:h-[200px] max-2xl:w-[200px] max-2xl:h-[200px] py-5"
@@ -149,9 +164,6 @@ export default function FreshProductComponent() {
     </section>
   );
 }
-
-
-
 
 // "use client";
 // import Image from "next/image";

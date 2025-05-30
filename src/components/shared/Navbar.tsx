@@ -4,10 +4,10 @@ import { IoMdClose } from "react-icons/io";
 import { usePathname } from "next/navigation";
 import { GiHamburgerMenu } from "react-icons/gi";
 import {FaHeart } from "react-icons/fa6";
-import { CiShoppingCart } from "react-icons/ci";
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import bannerImage from "@/assets/logo.png";
+import { FaCartShopping } from "react-icons/fa6";
 import {
   Dialog,
   DialogContent,
@@ -49,6 +49,7 @@ const Navbar = () => {
     { name: "Shop", path: "/shop" },
     { name: "About Us", path: "/aboutUs" },
     { name: "Blog", path: "/blog" },
+    { name: "addProduct", path: "/addProduct" },
   ];
 
   return (
@@ -101,18 +102,26 @@ const Navbar = () => {
           {/* right content */}
           <div className="flex items-center gap-3">
             <div className=" cursor-pointer p-0.5">
-              <p className="hidden lg:flex items-center gap-2">
-                <FaHeart /> Favorites
+              <p className={`hidden lg:flex items-center gap-2 ${
+                pathName !== "/" ? "text-black" : " "
+                }`}>
+                <FaHeart className={
+                  pathName !== "/" ? "text-[#749B3F]" : " "
+                }/> Favorites
               </p>
             </div>
             <div className="flex items-center gap-3">
               <Link href="/card" className="relative">
-                <CiShoppingCart size={25} />
-                <sup className="absolute left-4 -top-1 w-4 h-4 rounded-full bg-red-500 flex justify-center items-center text-sm p-1 text-white">
+                <FaCartShopping size={20} className={
+                  pathName !== "/" ? "text-[#749B3F]" : " "
+                } />
+                <sup className="absolute left-3 -top-2 w-4 h-4 rounded-full bg-red-500 flex justify-center items-center text-sm p-1 text-white">
                   0
                 </sup>
-              </Link>{" "}
-              <p className="hidden lg:flex">Cart</p>
+              </Link>
+              <p className={`hidden lg:flex ${
+                pathName !== "/" ? "text-black" : " "
+              }`}>Cart</p>
             </div>
             {/* modal start from here  */}
             <div className="hidden lg:flex">
@@ -124,7 +133,9 @@ const Navbar = () => {
                 <div className="flex gap-2">
                   <Dialog>
                     <DialogTrigger asChild>
-                      <button className="font-semibold cursor-pointer py-1 px-4 rounded-sm border">
+                      <button className={
+                        pathName !== "/" ? "font-bold cursor-pointer py-1 px-4 rounded-sm border text-black border-black" : "font-semibold cursor-pointer py-1 px-4 rounded-sm border"
+                      }>
                         Sign In
                       </button>
                     </DialogTrigger>
