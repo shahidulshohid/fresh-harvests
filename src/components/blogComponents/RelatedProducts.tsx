@@ -4,17 +4,13 @@ export default function RelatedProducts() {
   return (
     <section>
       {/* Header */}
-      <div className="text-center space-y-4 lg:space-y-5">
+      <div className="text-center space-y-4 lg:space-y-5 mt-[110px]">
         <button className="text-[14px] sm:text-xl bg-[#749B3F1A] rounded-lg lg:rounded-xl font-semibold text-greenText px-3 py-1 ">
           Out Products
         </button>
-        <h2 className="text-[#212337] font-medium text-3xl sm:text-4xl lg:text-5xl">
+        <h2 className="text-[#212337] font-medium text-3xl sm:text-4xl lg:text-5xl mb-8">
           Related Products
         </h2>
-        <p className="text-[12px] sm:text-base text-[#4A4A52]">
-          We pride ourselves on offering a wide variety of fresh and flavorful
-          fruits, vegetables, and salad ingredients.
-        </p>
       </div>
       {/* Cards */}
       <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -22,7 +18,7 @@ export default function RelatedProducts() {
         <div className="p-4 rounded-2xl shadow-xl space-y-4">
           <figure className="bg-[#F4F6F6] rounded-2xl flex items-center justify-center">
             <Image
-              src="/assets/kiwi.png"
+              src="/fruits1.png"
               width={200}
               height={200}
               className="max-sm:w-[140px] max-sm:h-[140px] max-lg:w-[200px] max-lg:h-[200px] max-2xl:w-[200px] max-2xl:h-[200px] py-5"
@@ -41,7 +37,7 @@ export default function RelatedProducts() {
         <div className="p-4 rounded-2xl shadow-xl space-y-4">
           <figure className="bg-[#F4F6F6] rounded-2xl flex items-center justify-center">
             <Image
-              src="/assets/kiwi.png"
+              src="/fruits1.png"
               width={200}
               height={200}
               className="max-sm:w-[140px] max-sm:h-[140px] max-lg:w-[200px] max-lg:h-[200px] max-2xl:w-[200px] max-2xl:h-[200px] py-5"
@@ -60,7 +56,7 @@ export default function RelatedProducts() {
         <div className="p-4 rounded-2xl shadow-xl space-y-4">
           <figure className="bg-[#F4F6F6] rounded-2xl flex items-center justify-center">
             <Image
-              src="/assets/kiwi.png"
+              src="/fruits1.png"
               width={200}
               height={200}
               className="max-sm:w-[140px] max-sm:h-[140px] max-lg:w-[200px] max-lg:h-[200px] max-2xl:w-[200px] max-2xl:h-[200px] py-5"
@@ -79,7 +75,7 @@ export default function RelatedProducts() {
         <div className="p-4 rounded-2xl shadow-xl space-y-4">
           <figure className="bg-[#F4F6F6] rounded-2xl flex items-center justify-center">
             <Image
-              src="/assets/kiwi.png"
+              src="/fruits1.png"
               width={200}
               height={200}
               className="max-sm:w-[140px] max-sm:h-[140px] max-lg:w-[200px] max-lg:h-[200px] max-2xl:w-[200px] max-2xl:h-[200px] py-5"

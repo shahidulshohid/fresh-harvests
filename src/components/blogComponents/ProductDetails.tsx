@@ -6,14 +6,7 @@ import { Rating } from "react-simple-star-rating";
 
 export default function ProductDetails() {
   const [quantity, setQuantity] = useState<number>(1);
-  {
-    /* TODO: make it dynamic rating */
-  }
-  // const [rating, setRating] = useState<number>(5);
   const rating: number = 5;
-  // const handleRating = (rate: number) => {
-  //   setRating(rate);
-  // };
 
   const handleIncrease = () => {
     setQuantity((prev) => prev + 1);
@@ -24,7 +17,7 @@ export default function ProductDetails() {
     }
   };
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-20">
+    <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-20 mt-10">
       <figure className="w-ful">
         <Image
           src="/coconut.png"

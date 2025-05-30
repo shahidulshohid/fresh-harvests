@@ -4,7 +4,7 @@ import React from "react";
 const SpecialOffer = () => {
   return (
     <section className="relative lg:mt-32 w-11/12 mx-auto px-4 md:px-8">
-      <div className="max-lg:text-center ">
+      <div className="max-lg:text-center  mt-[200px]">
         <button className="text-[14px] text-[#749B3F] sm:text-xl bg-[#749B3F1A] rounded-lg lg:rounded-lg font-semibold text-greenText px-3 py-1 ">
           Special Offer
         </button>

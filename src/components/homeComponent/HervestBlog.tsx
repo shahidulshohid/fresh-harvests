@@ -4,7 +4,7 @@ import { FaArrowRight } from "react-icons/fa6";
 
 export default function HarvestBlog() {
   return (
-    <section className="space-y-6 lg:space-y-6 w-11/12 mx-auto px-4 md:px-8">
+    <section className="space-y-6 lg:space-y-6 w-11/12 mx-auto px-4 md:px-8 mt-[160px]">
       {/* Header */}
       <div className="text-center space-y-4 lg:space-y-5">
         <button className="text-[14px] text-[#749B3F] sm:text-xl bg-[#749B3F1A] rounded-lg lg:rounded-lg font-semibold text-greenText px-3 py-1 ">

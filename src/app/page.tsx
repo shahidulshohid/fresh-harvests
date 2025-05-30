@@ -16,9 +16,9 @@ const Home = () => {
       <Banner/>
       <FreshProductComponent/>
       <SectionAbout/>
-      <HarvestBlog/>
       <SpecialOffer/>
       <Testimonial/>
+      <HarvestBlog/>
     </div>
   );
 };

@@ -4,7 +4,7 @@ import { useState } from "react";
 export default function FreshProductComponent() {
   const [toggle, setToggle] = useState<string>("All");
   return (
-    <section className="space-y-10 lg:space-y-10 mt-[200px]">
+    <section className="space-y-10 lg:space-y-10 mt-[150px] w-11/12 mx-auto px-4 md:px-8">
       {/* Header */}
       <div className="text-center space-y-4 lg:space-y-5">
         <button className="text-[14px] sm:text-xl bg-[#749B3F1A] rounded-lg lg:rounded-xl font-semibold text-greenText px-3 py-1 ">
@@ -141,7 +141,7 @@ export default function FreshProductComponent() {
         </div>
       </div>
       {/* All Product Button */}
-      <div>
+      <div className="text-center">
         <button className=" border border-[#FF6A1A]  text-[#FF6A1A] max-sm:text-[14px] text-xl lg:px-8 lg:py-4 rounded-lg">
           See All Products
         </button>
