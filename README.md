@@ -1,36 +1,95 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🥬 Fresh Harvests
 
-## Getting Started
+Fresh Harvests is a modern and responsive e-commerce web application for fresh fruits and vegetables. Built with *Next.js, **TypeScript, and **TailwindCSS*, it offers a smooth shopping experience with features like dynamic product details, ratings, reviews, and related product suggestions.
 
-First, run the development server:
+## 📂 GitHub Repository
 
-```bash
+[https://github.com/shahidulshohid/fresh-harvests](https://github.com/shahidulshohid/fresh-harvests)
+
+---
+
+## 📦 Tech Stack
+
+- *Frontend*: Next.js, TypeScript, TailwindCSS, shadcn
+- *Backend*: REST API (hosted on https://code-commando.com)
+- *Icons*: react-icons
+- *Image Handling*: Next/Image
+- *State Management*: React Hooks (useState, useEffect)
+
+---
+
+## ⚙ Project Setup
+
+### 🛠 Running Locally
+
+Follow these steps to run the project locally:
+
+1. *Clone the Repository*
+
+bash
+git clone https://github.com/shahidulshohid/fresh-harvests
+cd Fresh-Harvest
+
+
+2. ** Install Dependencies **
+
+- Using npm:
+
+bash
+npm install
+
+
+
+- Or using yarn:
+
+bash
+yarn install
+
+
+
+3. *Run the Development Server*
+  - Using npm:
+
+bash
 npm run dev
-# or
+
+
+
+- Or using yarn:
+
+bash
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🏗 Building the Project
 
-## Learn More
+To create a production build, run:
 
-To learn more about Next.js, take a look at the following resources:
+- Using npm:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+bash
+npm run build
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
+- Or using yarn:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+bash
+yarn build
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+## 🚀 Deploying the Application
+
+To deploy the application to a hosting service( vercel, Netlify)
+
+### 1. Prepare Environment Variables
+
+- Add any required .env variables on your hosting dashboard.
+
+### 2. Connect GitHub Repository
+
+- Most platforms allow you to directly deploy from your GitHub repo.
+
+### 3. Build and Deploy
+
+- The platform will automatically detect your Next.js setup and handle build commands.
