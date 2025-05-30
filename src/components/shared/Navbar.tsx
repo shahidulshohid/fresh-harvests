@@ -58,7 +58,7 @@ const Navbar = () => {
       <div
         className={`${
           navBg ? "bg-white shadow-xl transition-all ease" : "text-white"
-        } h-[12vh] flex items-center fixed z-[999] w-full`}
+        } h-[12vh] flex items-center fixed z-[99] w-full`}
       >
         <nav className="flex justify-between items-center w-11/12 mx-auto px-4 md:px-8">
           {/* left logo  */}
@@ -130,7 +130,7 @@ const Navbar = () => {
                   Logout
                 </button>
               ) : (
-                <div className="flex gap-2">
+                <div className="flex gap-2 z-[999]">
                   <Dialog>
                     <DialogTrigger asChild>
                       <button className={
@@ -153,7 +153,7 @@ const Navbar = () => {
             </div>
             <div className="ml-5">
               <button onClick={handleOpenNave} className="lg:hidden">
-                <GiHamburgerMenu size={20} />
+                <GiHamburgerMenu size={20} className="text-black" />
               </button>
             </div>
           </div>

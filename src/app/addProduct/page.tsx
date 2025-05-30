@@ -79,62 +79,73 @@ const AddProductForm = () => {
   };
 
   return (
-    <div>
+    <div className="w-11/13 mx-auto px-4 md:px-8 pt-30">
+        <div className="text-center my-6 text-2xl md:text-3xl font-bold">
+            <h2>Add Product</h2>
+        </div>
       <form onSubmit={handleSubmit} className="space-y-4">
-        <input
-          name="productName"
-          placeholder="Product Name"
-          onChange={handleChange}
-          required
-          className="border p-2 w-full"
-        />
-        <textarea
-          name="description"
-          placeholder="Description"
-          onChange={handleChange}
-          required
-          className="border p-2 w-full"
-        />
-        <input
-          name="price"
-          placeholder="Price"
-          type="number"
-          onChange={handleChange}
-          required
-          className="border p-2 w-full"
-        />
-        <input
-          name="stock"
-          placeholder="Stock"
-          type="number"
-          onChange={handleChange}
-          required
-          className="border p-2 w-full"
-        />
-        <input
-          name="categoryId"
-          placeholder="Category ID"
-          onChange={handleChange}
-          required
-          className="border p-2 w-full"
-        />
+        <div className="flex justify-between items-center gap-5">
+          <input
+            name="productName"
+            placeholder="Product Name"
+            onChange={handleChange}
+            required
+            className="border p-3 w-full"
+          />
+          <textarea
+            name="description"
+            placeholder="Description"
+            onChange={handleChange}
+            required
+            className="border w-full pl-2"
+          />
+        </div>
+        <div className="flex justify-between items-center gap-5">
+          <input
+            name="price"
+            placeholder="Price"
+            type="number"
+            onChange={handleChange}
+            required
+            className="border p-3 w-full"
+          />
+          <input
+            name="stock"
+            placeholder="Stock"
+            type="number"
+            onChange={handleChange}
+            required
+            className="border p-3 w-full"
+          />
+        </div>
+        <div className="flex justify-center items-center gap-5">
+          <input
+            name="categoryId"
+            placeholder="Category ID"
+            onChange={handleChange}
+            required
+            className="border p-3 w-full"
+          />
 
-        <input
-          type="file"
-          accept="image/*"
-          multiple
-          onChange={handleImageChange}
-          required
-          className="border p-2 w-full"
-        />
+          <input
+            type="file"
+            accept="image/*"
+            multiple
+            onChange={handleImageChange}
+            required
+            className="border p-3 w-full"
+          />
+        </div>
 
-        <button
-          type="submit"
-          disabled={loading}
-          className="bg-green-600 text-white px-4 py-2 rounded"
-        >
-          {loading ? "Adding..." : "Add Product"}
-        </button>
+        <div className="text-center">
+          <button
+            type="submit"
+            disabled={loading}
+            className="bg-[#FF6A1A] text-white px-4 py-3 rounded"
+          >
+            {loading ? "Adding..." : "Add Product"}
+          </button>
+        </div>
       </form>
     </div>
   );

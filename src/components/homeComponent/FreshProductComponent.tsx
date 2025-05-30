@@ -1,337 +1,112 @@
+'use client'
+
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
+
+interface Product {
+  _id?: string;
+  name: string;
+  price: number | string;
+  category?: string;
+  images?: string[];
+}
 
 export default function FreshProductComponent() {
   const [toggle, setToggle] = useState<string>("All");
-  const [products, setProducts] = useState([]);
+  const [products, setProducts] = useState<Product[]>([]);
+
+  // Fetch products from API
   const getProducts = async () => {
     try {
-      const res = await fetch("https://code-commando.com/api/v1/products");
+      const res = await fetch('https://code-commando.com/api/v1/products');
+      if (!res.ok) throw new Error("Network response was not ok");
       const data = await res.json();
-      setProducts(data.data);
+      setProducts(data.data || []);
     } catch (error) {
-      console.log(error);
+      console.error("Failed to fetch products:", error);
+      setProducts([]);
     }
   };
 
   useEffect(() => {
     getProducts();
   }, []);
-  console.log(products, "========================");
+
+  // Filter products based on category toggle
+  const filteredProducts = products.filter(product => {
+    if (toggle === "All") return true;
+    return product.category?.toLowerCase() === toggle.toLowerCase();
+  });
+
   return (
-    <section className="space-y-10 lg:space-y-10 mt-[10px] w-11/12 mx-auto px-4 md:px-8">
+    <section className="w-full px-5 lg:px-8 xl:px-[8%] space-y-10 pt-24">
       {/* Header */}
       <div className="text-center space-y-4 lg:space-y-5">
-        <button className="text-[14px] sm:text-xl bg-[#749B3F1A] rounded-lg lg:rounded-xl font-semibold text-greenText px-3 py-1 ">
-          Out Products
+        <button className="text-[14px] sm:text-xl bg-[#749B3F1A] rounded-lg lg:rounded-xl font-semibold text-greenText px-3 py-1">
+          Our Products
         </button>
         <h2 className="text-[#212337] font-medium text-3xl sm:text-4xl lg:text-5xl">
           Our Fresh Products
         </h2>
         <p className="text-[12px] sm:text-base text-[#4A4A52] max-sm:w-[80%] lg:w-[30%] mx-auto">
-          We pride ourselves on offering a wide variety of fresh and flavorful
-          fruits, vegetables, and salad ingredients.
+          We pride ourselves on offering a wide variety of fresh and flavorful fruits, vegetables, and salad ingredients.
         </p>
-        {/* Buttons */}
-        <div className="max-sm:space-x-2 max-lg:space-x-3 max-2xl:space-x-4 2xl:space-x-4">
-          <button
-            onClick={() => setToggle("All")}
-            className={`px-4 py-2 sm:px-8 sm:py-4 lg:px-6 lg:py-3 rounded-lg text-[12px] sm:text-xl lg:text-xl ${
-              toggle === "All"
-                ? "bg-[#749B3F] text-white"
-                : "border border-[#D9D9D9]"
-            }`}
-          >
-            All
-          </button>
-          <button
-            onClick={() => setToggle("Fruits")}
-            className={`px-4 py-2 sm:px-8 sm:py-4 lg:px-6 lg:py-3 rounded-lg text-[12px] sm:text-xl lg:text-xl ${
-              toggle === "Fruits"
-                ? "bg-[#749B3F] text-white"
-                : "border border-[#D9D9D9]"
-            }`}
-          >
-            Fruits
-          </button>
-          <button
-            onClick={() => setToggle("Vegetables")}
-            className={`px-4 py-2 sm:px-8 sm:py-4 lg:px-6 lg:py-3 rounded-lg text-[12px] sm:text-xl lg:text-xl ${
-              toggle === "Vegetables"
-                ? "bg-[#749B3F] text-white"
-                : "border border-[#D9D9D9]"
-            }`}
-          >
-            Vegetables
-          </button>
-          <button
-            onClick={() => setToggle("Salad")}
-            className={`px-4 py-2 sm:px-8 sm:py-4 lg:px-6 lg:py-3 rounded-lg text-[12px] sm:text-xl lg:text-xl ${
-              toggle === "Salad"
-                ? "bg-[#749B3F] text-white"
-                : "border border-[#D9D9D9]"
-            }`}
-          >
-            Salad
-          </button>
+
+        {/* Filter Buttons */}
+        <div className="flex justify-center space-x-2 max-sm:space-x-2 max-lg:space-x-3 max-2xl:space-x-4 2xl:space-x-4 flex-wrap">
+          {["All", "Fruits", "Vegetables", "Salad"].map(category => (
+            <button
+              key={category}
+              onClick={() => setToggle(category)}
+              className={`px-4 py-2 sm:px-8 sm:py-4 lg:px-6 lg:py-3 rounded-lg text-[12px] sm:text-xl lg:text-xl whitespace-nowrap ${
+                toggle === category
+                  ? "bg-[#749B3F] text-white"
+                  : "border border-[#D9D9D9] hover:bg-[#749B3F1A]"
+              }`}
+            >
+              {category}
+            </button>
+          ))}
         </div>
       </div>
-      {/* Products */}
-      <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        {/* Card one */}
-        <div className="p-4 rounded-2xl shadow-xl space-y-4">
-          <figure className="bg-[#F4F6F6] rounded-2xl flex items-center justify-center">
-            <Image
-              src="/aboutImg1.jpg"
-              width={200}
-              height={200}
-              className="max-sm:w-[140px] max-sm:h-[140px] max-lg:w-[200px] max-lg:h-[200px] max-2xl:w-[200px] max-2xl:h-[200px] py-5"
-              alt="A fruit image"
-            />
-          </figure>
-          <div className="text-center space-y-2">
-            <h4 className="font-medium text-[#212337] text-xl">Mushroom</h4>
-            <p className="text-[#4A4A52] ">$2.3/kg</p>
-            <button className="text-[#212337] font-medium border border-[#D9D9D9] w-full rounded-md py-1 text-xl hover:bg-[#FF6A1A] hover:text-white hover:transition-all">
-              Add to cart
-            </button>
-          </div>
-        </div>
-        {/* Card Two */}
-        <div className="p-4 rounded-2xl shadow-xl space-y-4">
-          <figure className="bg-[#F4F6F6] rounded-2xl flex items-center justify-center">
-            <Image
-              src="/assets/kiwi.png"
-              width={200}
-              height={200}
-              className="max-sm:w-[140px] max-sm:h-[140px] max-lg:w-[200px] max-lg:h-[200px] max-2xl:w-[200px] max-2xl:h-[200px] py-5"
-              alt="A fruit image"
-            />
-          </figure>
-          <div className="text-center space-y-2">
-            <h4 className="font-medium text-[#212337] text-xl">Mustard</h4>
-            <p className="text-[#4A4A52] ">$1.3/kg</p>
-            <button className="text-[#212337] font-medium border border-[#D9D9D9] w-full rounded-md py-1 text-xl hover:bg-[#FF6A1A] hover:text-white hover:transition-all">
-              Add to cart
-            </button>
-          </div>
-        </div>
-        {/* Card Three */}
-        <div className="p-4 rounded-2xl shadow-xl space-y-4">
-          <figure className="bg-[#F4F6F6] rounded-2xl flex items-center justify-center">
-            <Image
-              src="/assets/kiwi.png"
-              width={200}
-              height={200}
-              className="max-sm:w-[140px] max-sm:h-[140px] max-lg:w-[200px] max-lg:h-[200px] max-2xl:w-[200px] max-2xl:h-[200px] py-5"
-              alt="A fruit image"
-            />
-          </figure>
-          <div className="text-center space-y-2">
-            <h4 className="font-medium text-[#212337] text-xl">Orange</h4>
-            <p className="text-[#4A4A52] ">$4.2/kg</p>
-            <button className="text-[#212337] font-medium border border-[#D9D9D9] w-full rounded-md py-1 text-xl hover:bg-[#FF6A1A] hover:text-white hover:transition-all">
-              Add to cart
-            </button>
-          </div>
-        </div>
-        {/* Card Four */}
-        <div className="p-4 rounded-2xl shadow-xl space-y-4">
-          <figure className="bg-[#F4F6F6] rounded-2xl flex items-center justify-center">
-            <Image
-              src="/assets/kiwi.png"
-              width={200}
-              height={200}
-              className="max-sm:w-[140px] max-sm:h-[140px] max-lg:w-[200px] max-lg:h-[200px] max-2xl:w-[200px] max-2xl:h-[200px] py-5"
-              alt="A fruit image"
-            />
-          </figure>
-          <div className="text-center space-y-2">
-            <h4 className="font-medium text-[#212337] text-xl">Guava</h4>
-            <p className="text-[#4A4A52] ">$2.2/kg</p>
-            <button className="text-[#212337] font-medium border border-[#D9D9D9] w-full rounded-md py-1 text-xl hover:bg-[#FF6A1A] hover:text-white hover:transition-all">
-              Add to cart
-            </button>
-          </div>
-        </div>
+
+      {/* Products Grid */}
+      <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        {filteredProducts.length > 0 ? (
+          filteredProducts.slice(0, 8).map((product, index) => (
+            <div key={product._id || index} className="p-4 rounded-2xl shadow-xl space-y-4 bg-white hover:shadow-2xl transition-shadow">
+              <figure className="bg-[#F4F6F6] rounded-2xl flex items-center justify-center p-5">
+                <Image
+                  src={product.images?.[0] || "/placeholder.png"}
+                  alt={product.name || "Product image"}
+                  width={200}
+                  height={200}
+                  className="object-contain w-[140px] sm:w-[160px] md:w-[180px] lg:w-[200px] h-[140px] sm:h-[160px] md:h-[180px] lg:h-[200px]"
+                  priority={index < 4}
+                />
+              </figure>
+              <div className="text-center space-y-2">
+                <h4 className="font-medium text-[#212337] text-lg sm:text-xl truncate">{product.name}</h4>
+                <p className="text-[#4A4A52] text-base sm:text-lg">৳{product.price}</p>
+                <button className="text-[#212337] font-medium border border-[#D9D9D9] w-full rounded-md py-2 text-lg hover:bg-[#FF6A1A] hover:text-white transition-colors duration-300">
+                  Add to cart
+                </button>
+              </div>
+            </div>
+          ))
+        ) : (
+          <p className="col-span-full text-center text-gray-500 text-lg sm:text-xl py-10">
+            Sorry, no products available in this category.
+          </p>
+        )}
       </div>
-      {/* All Product Button */}
-      <div>
-        <button className=" border border-[#FF6A1A]  text-[#FF6A1A] max-sm:text-[14px] text-xl lg:px-8 lg:py-4 rounded-lg">
+
+      {/* See All Products Button */}
+      <div className="text-center">
+        <button className="border border-[#FF6A1A] text-[#FF6A1A] max-sm:text-[14px] text-xl lg:px-8 lg:py-4 rounded-lg hover:bg-[#FF6A1A] hover:text-white transition-colors duration-300">
           See All Products
         </button>
       </div>
     </section>
   );
 }
-
-// "use client";
-// import Image from "next/image";
-// import Link from "next/link";
-// import React, { useEffect, useState } from "react";
-// type Product = {
-//   id: string;
-//   images: string[];
-//   productName: string;
-//   price: number;
-// };
-// type ApiResponse = {
-//   success: boolean;
-//   data: Product[];
-// };
-// export default function FreshProductComponent() {
-//   const [toggle, setToggle] = useState<string>("All");
-//   const [products, setProducts] = useState<Product[]>([]);
-//   console.log(products[0]);
-
-//   useEffect(() => {
-//     const fetchData = async () => {
-//       try {
-//         const response = await fetch(
-//           "https://code-commando.com/api/v1/products"
-//         );
-//         const result: ApiResponse = await response.json();
-//         setProducts(result.data);
-//       } catch (error) {
-//         console.error("Error fetching products:", error);
-//       }
-//     };
-
-//     fetchData();
-//   }, []);
-
-//   return (
-//     <section className="space-y-10 lg:space-y-10">
-//       {/* Header */}
-//       <div className="text-center space-y-4 lg:space-y-5">
-//         <button className="text-[14px] text-[#749B3F] sm:text-xl bg-[#749B3F1A] rounded-lg lg:rounded-lg font-semibold text-greenText px-3 py-1 ">
-//           Our Products
-//         </button>
-//         <h2 className="text-[#212337] font-medium text-3xl sm:text-4xl lg:text-5xl">
-//           Our Fresh Products
-//         </h2>
-//         <p className="text-[12px] sm:text-base text-[#4A4A52] max-sm:w-[80%] lg:w-[30%] mx-auto">
-//           We pride ourselves on offering a wide variety of fresh and flavorful
-//           fruits, vegetables, and salad ingredients.
-//         </p>
-//         {/* Buttons */}
-//         <div className="max-sm:space-x-2 max-lg:space-x-3 max-2xl:space-x-4 2xl:space-x-4">
-//           <button
-//             onClick={() => setToggle("All")}
-//             className={`px-4 py-2 sm:px-8 sm:py-4 lg:px-6 lg:py-3 rounded-lg text-[12px] sm:text-xl lg:text-xl ${
-//               toggle === "All"
-//                 ? "bg-[#749B3F] text-white"
-//                 : "border border-[#D9D9D9]"
-//             }`}
-//           >
-//             All
-//           </button>
-//           <button
-//             onClick={() => setToggle("Fruits")}
-//             className={`px-4 py-2 sm:px-8 sm:py-4 lg:px-6 lg:py-3 rounded-lg text-[12px] sm:text-xl lg:text-xl ${
-//               toggle === "Fruits"
-//                 ? "bg-[#749B3F] text-white"
-//                 : "border border-[#D9D9D9]"
-//             }`}
-//           >
-//             Fruits
-//           </button>
-//           <button
-//             onClick={() => setToggle("Vegetables")}
-//             className={`px-4 py-2 sm:px-8 sm:py-4 lg:px-6 lg:py-3 rounded-lg text-[12px] sm:text-xl lg:text-xl ${
-//               toggle === "Vegetables"
-//                 ? "bg-[#749B3F] text-white"
-//                 : "border border-[#D9D9D9]"
-//             }`}
-//           >
-//             Vegetables
-//           </button>
-//           <button
-//             onClick={() => setToggle("Salad")}
-//             className={`px-4 py-2 sm:px-8 sm:py-4 lg:px-6 lg:py-3 rounded-lg text-[12px] sm:text-xl lg:text-xl ${
-//               toggle === "Salad"
-//                 ? "bg-[#749B3F] text-white"
-//                 : "border border-[#D9D9D9]"
-//             }`}
-//           >
-//             Salad
-//           </button>
-//         </div>
-//       </div>
-//       {/* Products */}
-//       {products.length ? (
-//         <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-//           {products.map((product) => (
-//             <div
-//               key={product?.id}
-//               className="p-4 rounded-2xl shadow-xl space-y-4"
-//             >
-//               <Link href={``}></Link>
-//               <figure className="bg-[#F4F6F6] rounded-2xl flex items-center justify-center">
-//                 <Image
-//                   // src="/assets/kiwi.png"
-//                   src={`${product.images[0]}`}
-//                   width={200}
-//                   height={200}
-//                   // className="max-sm:max-w-[140px] max-sm:max-h-[140px] max-lg:max-w-[200px] max-lg:max-h-[200px] max-2xl:max-w-[200px] max-2xl:max-h-[200px] w-[200px] h-[200px] py-5"
-//                   className="max-sm:w-[140px] max-sm:h-[140px] max-lg:w-[200px] max-lg:h-[200px] max-2xl:w-[200px] max-2xl:h-[200px] w-[200px] h-[200px] py-5"
-//                   alt="A fruit image"
-//                 />
-//               </figure>
-//               <div className="text-center space-y-2">
-//                 <h4 className="font-medium text-[#212337] text-xl">
-//                   {product.productName as string}
-//                 </h4>
-//                 <p className="text-[#4A4A52] ">${`${product.price}`}/kg</p>
-//                 <button
-//                   onClick={() => console.log(product?.id)}
-
-//                   className="text-[#212337] font-medium border border-[#D9D9D9] w-full rounded-md py-1 text-xl hover:bg-[#FF6A1A] hover:text-white hover:transition-all"
-//                 >
-//                   Add to cart
-//                 </button>
-//               </div>
-//             </div>
-//           ))}
-//         </div>
-//       ) : (
-//         "Loading........."
-//       )}
-//       {/* <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-//         {products.map((product) => (
-//           <div
-//             key={product?.id}
-//             className="p-4 rounded-2xl shadow-xl space-y-4"
-//           >
-//             <figure className="bg-[#F4F6F6] rounded-2xl flex items-center justify-center">
-//               <Image
-//                 // src="/assets/kiwi.png"
-//                 src={`${product.images[0]}`}
-//                 width={200}
-//                 height={200}
-//                 // className="max-sm:max-w-[140px] max-sm:max-h-[140px] max-lg:max-w-[200px] max-lg:max-h-[200px] max-2xl:max-w-[200px] max-2xl:max-h-[200px] w-[200px] h-[200px] py-5"
-//                 className="max-sm:w-[140px] max-sm:h-[140px] max-lg:w-[200px] max-lg:h-[200px] max-2xl:w-[200px] max-2xl:h-[200px] w-[200px] h-[200px] py-5"
-//                 alt="A fruit image"
-//               />
-//             </figure>
-//             <div className="text-center space-y-2">
-//               <h4 className="font-medium text-[#212337] text-xl">
-//                 {product.productName as string}
-//               </h4>
-//               <p className="text-[#4A4A52] ">${`${product.price}`}/kg</p>
-//               <button className="text-[#212337] font-medium border border-[#D9D9D9] w-full rounded-md py-1 text-xl hover:bg-[#FF6A1A] hover:text-white hover:transition-all">
-//                 Add to cart
-//               </button>
-//             </div>
-//           </div>
-//         ))}
-//       </div> */}
-//       {/* All Product Button */}
-//       <div className="flex items-center justify-center">
-//         <button className=" border border-[#FF6A1A]  text-[#FF6A1A] max-sm:text-[14px] text-xl px-6 py-3 lg:px-8 lg:py-4 rounded-lg">
-//           See All Products
-//         </button>
-//       </div>
-//     </section>
-//   );
-// }
