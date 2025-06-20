@@ -6,7 +6,7 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import {FaHeart } from "react-icons/fa6";
 import { useEffect, useState } from "react";
 import Image from "next/image";
-import bannerImage from "@/assets/logo.png";
+import logo from "@/assets/logo.png";
 import { FaCartShopping } from "react-icons/fa6";
 import {
   Dialog,
@@ -50,6 +50,7 @@ const Navbar = () => {
     { name: "About Us", path: "/aboutUs" },
     { name: "Blog", path: "/blog" },
     { name: "addProduct", path: "/addProduct" },
+    { name: "Users", path: "/users" },
   ];
 
   return (
@@ -69,7 +70,7 @@ const Navbar = () => {
             >
               <div className="flex items-center gap-2">
                 <Image
-                  src={bannerImage}
+                  src={logo}
                   alt="logo"
                   width={30}
                   height={30}

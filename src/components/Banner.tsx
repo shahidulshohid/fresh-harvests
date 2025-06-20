@@ -43,7 +43,9 @@ const Banner = () => {
                   </div>
                   <button className="bg-[#176D38] px-4 py-1 mt-2 rounded-full text-white text-sm">
                     Code:{" "}
-                    <span className="text-[#FAC714] font-semibold">FRESH25</span>
+                    <span className="text-[#FAC714] font-semibold">
+                      FRESH25
+                    </span>
                   </button>
                 </div>
                 <Image
@@ -54,6 +56,24 @@ const Banner = () => {
                   className="rounded-full"
                 />
               </div>
+            </div>
+            <div className="flex items-center mt-12 gap-3">
+              <figure className="w-ful max-lg:mx-auto">
+                <Image
+                  src="/appleApp.png"
+                  width={138}
+                  height={40}
+                  alt="appleApp"
+                />
+              </figure>
+              <figure className="w-ful max-lg:mx-auto">
+                <Image
+                  src={"/googlePlay.png"}
+                  width={138}
+                  height={40}
+                  alt="appleApp"
+                />
+              </figure>
             </div>
           </div>
 
