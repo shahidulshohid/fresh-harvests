@@ -52,13 +52,13 @@ const Login = () => {
             <FaEye className="text-[#A6A6A6]" />
           )}
         </span>
-        <div className="flex justify-between items-center my-2">
+          <Link href="/change-password" className="flex justify-between items-center my-2 cursor-pointer">
           <p className="flex items-center gap-2">
             <Checkbox className="border-[#FF6A1A]" />
             Remember me
           </p>
           <span className="border-b-2 border-gray-600">Forget Password</span>
-        </div>
+          </Link>
         <button
           type="submit"
           className="bg-[#FF6A1A] font-semibold text-white py-2 rounded-lg text-lg"
